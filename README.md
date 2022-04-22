@@ -12,3 +12,27 @@ This application manages a database of books and authors
  * Use maven command: `mvn clean verify spring-boot:run`
  * The application should run at `http://localhost:8090`
  * The swagger documentation will be available at `http://localhost:8090/swagger-ui.html#/`
+
+## Sample request JSON body
+# POST Sample
+````json
+{
+"bookName": "The Da Vinci Code",
+"publisher": "Corgie Adult",
+"publicationYear": "2009",
+"isCopyrighted": true,
+"authors": [{
+"name": "Dan Brown",
+"dob" : "22/06/1964"
+}]
+}
+````
+
+# PUT Sample
+````json
+{
+    "bookName": "The Da Vinci Code",
+    "publisher": "Corgie Adult - 01",
+    "publicationYear": "2010"
+}
+````
