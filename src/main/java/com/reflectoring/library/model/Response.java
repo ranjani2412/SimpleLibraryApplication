@@ -1,20 +1,14 @@
 package com.reflectoring.library.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+@AllArgsConstructor
 public class Response {
     private final String responseCode;
 
     private final String responseMsg;
-
-    public String getResponseCode() {
-        return responseCode;
-    }
-
-    public String getResponseMsg() {
-        return responseMsg;
-    }
-
-    public Response(String responseCode, String responseMsg) {
-        this.responseCode = responseCode;
-        this.responseMsg = responseMsg;
-    }
 }

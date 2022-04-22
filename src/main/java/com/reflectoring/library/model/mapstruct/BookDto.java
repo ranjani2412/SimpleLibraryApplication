@@ -1,10 +1,14 @@
 package com.reflectoring.library.model.mapstruct;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.Set;
 
+@Getter
+@Setter
 @NoArgsConstructor
 public class BookDto {
     @JsonProperty("bookId")
@@ -24,54 +28,6 @@ public class BookDto {
 
     @JsonProperty("authors")
     private Set<AuthorDto> authors;
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPublisher() {
-        return publisher;
-    }
-
-    public void setPublisher(String publisher) {
-        this.publisher = publisher;
-    }
-
-    public String getPublicationYear() {
-        return publicationYear;
-    }
-
-    public void setPublicationYear(String publicationYear) {
-        this.publicationYear = publicationYear;
-    }
-
-    public boolean isCopyrightIssued() {
-        return copyrightIssued;
-    }
-
-    public void setCopyrightIssued(boolean copyrightIssued) {
-        this.copyrightIssued = copyrightIssued;
-    }
-
-    public Set<AuthorDto> getAuthors() {
-        return authors;
-    }
-
-    public void setAuthors(Set<AuthorDto> authors) {
-        this.authors = authors;
-    }
 
     @Override
     public String toString() {
