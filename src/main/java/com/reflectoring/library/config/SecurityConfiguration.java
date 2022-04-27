@@ -32,9 +32,10 @@ public class SecurityConfiguration  extends WebSecurityConfigurerAdapter {
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests()
-                .antMatchers(URI_PATTERN)
-                .hasAnyRole()
-                .anyRequest().permitAll().and()
+                .antMatchers(URI_PATTERN).permitAll()
+                .antMatchers("/v2/api-docs/**").permitAll()
+                .antMatchers("/swagger-ui/**").permitAll()
+                .antMatchers("/swagger-ui.html").permitAll().and()
                 .addFilter(new BasicAuthenticationFilter(authenticationManager(),
                         authenticationErrorHandler()))
                 .formLogin().disable()
@@ -50,13 +51,15 @@ public class SecurityConfiguration  extends WebSecurityConfigurerAdapter {
                 .withUser(basicAuth.getUsername())
                 .password(PasswordEncoderFactories
                         .createDelegatingPasswordEncoder()
-                        .encode(basicAuth.getPassword()));
+                        .encode(basicAuth.getPassword()))
+                .roles("USER");
     }
 
     @Bean
     public AuthenticationEntryPoint authenticationErrorHandler() {
         AuthenticationErrorHandler authErrorHandler =
                 new AuthenticationErrorHandler(new ObjectMapper());
+        authErrorHandler.setRealmName("Library Authentication");
         return authErrorHandler;
     }
 }
